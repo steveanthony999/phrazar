@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "phrase": "Good morning"
+  },
+  {
+    "id": 2,
+    "phrase": "Good afternoon"
+  },
+  {
+    "id": 3,
+    "phrase": "Good evening"
+  },
+  {
+    "id": 4,
+    "phrase": "Goodbye"
+  },
+  {
+    "id": 5,
+    "phrase": "See you next time"
+  }
+]
