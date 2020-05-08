@@ -1,10 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   Select,
   FormControl,
   InputLabel,
   makeStyles,
-  Button
+  Button,
+  Grid,
+  Paper,
+  Container,
+  Typography
 } from '@material-ui/core';
 import VolumeUpIcon from '@material-ui/icons/VolumeUp';
 import BgImg from './bg.jpg';
@@ -13,13 +17,26 @@ import BgAnim from './Nt6v.gif';
 const useStyles = makeStyles(theme => ({
   formControl: {
     margin: theme.spacing(4),
-    minWidth: 200
+    minWidth: 200,
+    display: 'flex'
   },
   selectEmpty: {
     marginTop: theme.spacing(4)
   },
   btn: {
     marginTop: theme.spacing(4)
+  },
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+    marginTop: theme.spacing(4)
+  },
+  speech: {
+    cursor: 'pointer'
+  },
+  transliterate: {
+    width: '100%'
   }
 }));
 
@@ -197,49 +214,86 @@ const TranslateGoogleApi = () => {
 
   return (
     <div>
-      <FormControl variant='outlined' className={classes.formControl}>
-        <InputLabel>Target Language</InputLabel>
-        <Select native label='Target Language' onChange={handleChange}>
-          <option value='' />
-          <option value='{"short_lang": "es", "code": "Latn", "voice": 31}'>
-            Spanish
-          </option>
-          <option value='{"short_lang": "th", "code": "Thai", "voice": 16}'>
-            Thai
-          </option>
-          <option value='{"short_lang": "ja", "code": "Jpan", "voice": 18}'>
-            Japanese
-          </option>
-          <option value='{"short_lang": "fr", "code": "Latn", "voice": 3}'>
-            French
-          </option>
-        </Select>
+      <Paper className={classes.paper}>
+        <FormControl variant='outlined' className={classes.formControl}>
+          <InputLabel>Target Language</InputLabel>
+          <Select native label='Target Language' onChange={handleChange}>
+            <option value='' />
+            <option value='{"short_lang": "es", "code": "Latn", "voice": 31}'>
+              Spanish
+            </option>
+            <option value='{"short_lang": "th", "code": "Thai", "voice": 16}'>
+              Thai
+            </option>
+            <option value='{"short_lang": "ja", "code": "Jpan", "voice": 18}'>
+              Japanese
+            </option>
+            <option value='{"short_lang": "fr", "code": "Latn", "voice": 3}'>
+              French
+            </option>
+          </Select>
 
-        <Button
-          variant='outlined'
-          color='primary'
-          className={classes.btn}
-          onClick={handleClick}
+          <Button
+            variant='outlined'
+            color='primary'
+            className={classes.btn}
+            onClick={handleClick}
+          >
+            Get movie quotes
+          </Button>
+        </FormControl>
+      </Paper>
+
+      <Paper className={classes.paper}>
+        <Typography variant='h6' id='phrases'>
+          Choose your target language and click 'GET MOVIE QUOTES'
+        </Typography>
+      </Paper>
+
+      <Paper className={classes.paper}>
+        <Typography variant='h6' id='translations'>
+          Translation...
+        </Typography>
+      </Paper>
+
+      <Paper className={classes.paper}>
+        <Typography
+          variant='h6'
+          id='transliterations'
+          className={classes.transliterate}
+          // noWrap
+          style={{ overflow: 'scroll' }}
         >
-          Get Phrases
-        </Button>
-      </FormControl>
-      <h2 id='phrases'>This is where phrases will go</h2>
-      <h1 id='translations'>This is where translations will go</h1>
-      <p id='warning' style={{ display: 'none' }}>
-        Sorry, your browser does not support the Web Speech API.
-      </p>
-      <VolumeUpIcon id='speakBtn' onClick={handleSpeechClick} />
-      <h1 id='transliterations'>This is where transliterations will go</h1>
-      <p>
-        Movie: <span id='movie'></span>
-      </p>
-      <div id='bg-play' style={{ display: 'none' }}>
-        <img src={BgAnim} />
-      </div>
-      <div id='bg-stop' style={{ display: 'inline-block' }}>
-        <img src={BgImg} />
-      </div>
+          This is where transliterations will go
+        </Typography>
+        {/* <h1 id='transliterations'>This is where transliterations will go</h1> */}
+      </Paper>
+
+      <Paper className={classes.paper}>
+        <Typography variant='h6'>
+          Movie: <span id='movie'></span>
+        </Typography>
+      </Paper>
+
+      <Paper className={classes.paper}>
+        <p id='warning' style={{ display: 'none' }}>
+          Sorry, your browser does not support the Web Speech API.
+        </p>
+        <VolumeUpIcon
+          id='speakBtn'
+          className={classes.speech}
+          onClick={handleSpeechClick}
+        />
+      </Paper>
+
+      <Paper className={classes.paper}>
+        <div id='bg-play' style={{ display: 'none' }}>
+          <img src={BgAnim} width='260px' />
+        </div>
+        <div id='bg-stop' style={{ display: 'inline-block' }}>
+          <img src={BgImg} width='260px' />
+        </div>
+      </Paper>
     </div>
   );
 };
