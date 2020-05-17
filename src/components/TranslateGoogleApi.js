@@ -61,26 +61,6 @@ const TranslateGoogleApi = () => {
     loadPhrases();
   };
 
-  //   function loadPhrases(e) {
-  //     const xhr = new XMLHttpRequest();
-
-  //     xhr.open('GET', './phrase.json', true);
-
-  //     xhr.onload = function() {
-  //       if (this.status === 200) {
-  //         const phrases = JSON.parse(this.responseText);
-
-  //         const rand = Math.floor(Math.random() * 5);
-
-  //         document.getElementById('phrases').innerHTML = phrases[rand].phrase;
-
-  //         loadTranslations(phrases[rand].phrase);
-  //       }
-  //     };
-
-  //     xhr.send();
-  //   }
-
   function loadPhrases(e) {
     var data = null;
 
@@ -264,7 +244,7 @@ const TranslateGoogleApi = () => {
           // noWrap
           style={{ overflow: 'scroll' }}
         >
-          This is where transliterations will go
+          Transliteration...
         </Typography>
         {/* <h1 id='transliterations'>This is where transliterations will go</h1> */}
       </Paper>
