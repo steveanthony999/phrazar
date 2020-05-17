@@ -80,7 +80,8 @@ const TranslateGoogleApi = () => {
       }
     });
 
-    const movieQuotes = process.env.REACT_APP_MOVIE_QUOTES_URL;
+    const movieQuotes =
+      'https://andruxnet-random-famous-quotes.p.rapidapi.com/?cat=movies&count=1';
     const movieQuotesKey = process.env.REACT_APP_RAPID_API_MOVIE_QUOTES_KEY;
 
     xhr.open('GET', movieQuotes);
